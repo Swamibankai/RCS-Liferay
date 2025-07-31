@@ -4,29 +4,44 @@
 <portlet:defineObjects />
 
 <div>
-	<h2>RCS Liferay Portlet</h2>
+    <h2>RCS Liferay Portlet</h2>
 
-	<p>This portlet connects to the Google RCS Business Messaging (RBM) platform.</p>
+    <p>This portlet connects to the Google RCS Business Messaging (RBM) platform.</p>
 
-	<form action="<portlet:actionURL />" method="post">
-		<input type="hidden" name="<portlet:namespace />action" value="connect">
-		<button type="submit">Connect to RBM</button>
-	</form>
+    <% 
+    String connected = (String) renderRequest.getPortletSession().getAttribute("connected");
+    if ("true".equals(connected)) {
+    %>
+        <p><strong>Status:</strong> Connected</p>
+    <% } else { %>
+        <form action="<portlet:actionURL />" method="post">
+            <input type="hidden" name="<portlet:namespace />action" value="connect">
+            <button type="submit">Connect to RBM</button>
+        </form>
+    <% } %>
 
-	<hr>
+    <hr>
 
-	<h3>Send Message</h3>
+    <h3>API Information</h3>
+    <ul>
+        <li><strong>Webhook URL:</strong> <portlet:resourceURL id="webhook" /></li>
+        <li><strong>Status URL:</strong> <portlet:resourceURL id="status" /></li>
+    </ul>
 
-	<form action="<portlet:actionURL />" method="post">
-		<input type="hidden" name="<portlet:namespace />action" value="sendMessage">
-		<div>
-			<label for="<portlet:namespace />msisdn">Phone Number (E.164):</label>
-			<input type="text" id="<portlet:namespace />msisdn" name="<portlet:namespace />msisdn">
-		</div>
-		<div>
-			<label for="<portlet:namespace />message">Message:</label>
-			<textarea id="<portlet:namespace />message" name="<portlet:namespace />message"></textarea>
-		</div>
-		<button type="submit">Send Message</button>
-	</form>
+    <hr>
+
+    <h3>Send Message</h3>
+
+    <form action="<portlet:actionURL />" method="post">
+        <input type="hidden" name="<portlet:namespace />action" value="sendMessage">
+        <div>
+            <label for="<portlet:namespace />msisdn">Phone Number (E.164):</label>
+            <input type="text" id="<portlet:namespace />msisdn" name="<portlet:namespace />msisdn">
+        </div>
+        <div>
+            <label for="<portlet:namespace />message">Message:</label>
+            <textarea id="<portlet:namespace />message" name="<portlet:namespace />message"></textarea>
+        </div>
+        <button type="submit">Send Message</button>
+    </form>
 </div>
