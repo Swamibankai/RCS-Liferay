@@ -1,0 +1,37 @@
+.rcs-liferay-portlet {
+    font-family: sans-serif;
+}
+
+.rcs-liferay-portlet h2 {
+    color: #333;
+}
+
+.rcs-liferay-portlet form {
+    margin-bottom: 20px;
+}
+
+.rcs-liferay-portlet label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.rcs-liferay-portlet input[type="text"],
+.rcs-liferay-portlet textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.rcs-liferay-portlet button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.rcs-liferay-portlet button:hover {
+    background-color: #45a049;
+}

@@ -1,0 +1,1 @@
+console.log("RCS Liferay Portlet loaded!");
